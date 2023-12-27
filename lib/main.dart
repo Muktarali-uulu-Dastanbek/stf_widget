@@ -30,7 +30,7 @@ class _HomePageState extends State<HomePage> {
   String operatsia = "+";
   dynamic result = "";
 
-  // dynamic textbuttonColor = Colors.blue.withOpacity(0.5);
+  dynamic textbuttonColor = Colors.blue.withOpacity(0.5);
 
   final TextEditingController controller1 = TextEditingController();
   final TextEditingController controller2 = TextEditingController();
@@ -49,6 +49,14 @@ class _HomePageState extends State<HomePage> {
             TextField(
               controller: controller1,
               keyboardType: TextInputType.number,
+              onChanged: (value) {
+                if (controller1.text.isEmpty || controller2.text.isEmpty) {
+                  textbuttonColor = Colors.blue.withOpacity(0.5);
+                } else {
+                  textbuttonColor = Colors.blue;
+                }
+                setState(() {});
+              },
               decoration: InputDecoration(
                 hintText: "1-число",
                 focusedBorder: OutlineInputBorder(
@@ -71,6 +79,14 @@ class _HomePageState extends State<HomePage> {
             TextField(
               controller: controller2,
               keyboardType: TextInputType.number,
+              onChanged: (value) {
+                if (controller1.text.isEmpty || controller2.text.isEmpty) {
+                  textbuttonColor = Colors.blue.withOpacity(0.5);
+                } else {
+                  textbuttonColor = Colors.blue;
+                }
+                setState(() {});
+              },
               decoration: InputDecoration(
                 hintText: "2-число",
                 focusedBorder: OutlineInputBorder(
@@ -111,7 +127,7 @@ class _HomePageState extends State<HomePage> {
                 style: TextStyle(fontSize: 25, color: Colors.white),
               ),
               style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(Colors.blue),
+                backgroundColor: MaterialStateProperty.all(textbuttonColor),
               ),
             ),
             SizedBox(height: 20),
